@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Pokemon</title>
+    <link href="MyStyleSheet.css" type="text/css" rel="stylesheet"/>
+    <script src="types.js"></script>
+    <script src="moves.js"></script>
+    <script src="pokedex.js"></script>
+    <script src="combined.js"></script>
+    <style type="text/css"></style>
+    <script>
+        
+    </script>
+  
+</head>
+
+<body style="background-image: url('background/battlefield.png')" onload="extractLocal(); displayPokemones();">
+  
+    <div class="container">
+        <div id="titelDiv" style="border:1px solid black">
+            <h1 id="gameTitle">Catch a Pokemon</h1>
+        </div>
+        <div id="buttleArea">
+            <div class="semiContainer" id="Me">
+                <div id="Attacks">
+                    <input type="button" value="attack1" class="" onclick="" />
+                    <input type="button" value="attack2" class="" onclick="" />
+                </div>
+                <div id="phMyPokemon">
+
+                </div>
+
+            </div>
+            <div class="semiContainer" id="Opponent">
+                <div id="phOpponentPokemon"></div>
+            </div>
+        </div>
+        <div id="barSelection">
+            <div id="phMyPokemons"></div>
+            <div id="buttonsHolder">
+                <input type="button" class="barBottuns" value="Change Pokemon" onclick="updateFlag()" />
+                <input type="button" class="barBottuns" value="Quit" onclick="move('wildPokemons.html')" />
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

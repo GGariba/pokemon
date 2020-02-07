@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="MyStyleSheet.css" type="text/css" rel="stylesheet" />
+    <script src="pokedex.js" ></script>
+    <script src="combined.js" type="text/javascript"></script>
+    <script src="moves.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Permanent+Marker&display=swap" rel="stylesheet">
+    <script>
+        shuffleflag = 3;
+
+        function shuffle() {
+            var temp = "";
+            pokemonIds = {}
+            for (i = 0; i < 3; i++) {
+                indexRand = indexSelector(pokemons.length)
+                pokemonIds[i] = new Pokemon(pokemons[indexRand]);
+                temp += '<div class="pokemonOption" id="pokemon">' + pokemonIds[i].image + '<h3>' + pokemonIds[i].name + '</h3></div>';
+            }
+            document.getElementById("phPokemon").innerHTML = temp
+            remainShuffle()
+            localSave("currentPokemons", pokemonIds)
+        }
+
+        function remainShuffle() {
+            if (shuffleflag == 2)
+                document.getElementById("phRemainShuffle").innerHTML = "<h3>You have 2/3 shuffle pokemon attemps</h3>"
+            if (shuffleflag == 1)
+                document.getElementById("phRemainShuffle").innerHTML = "<h3>Last chance on shuffles!</h3>"
+            if (shuffleflag == 0)
+                document.getElementById("phRemainShuffle").innerHTML = "<h3>you can't shuffle pokemon again</h3>"
+        }
+
+
+        function updateFlag() {
+            if (shuffleflag > 0) {
+                shuffleflag = shuffleflag - 1;
+                shuffle();
+            }
+            if (shuffleflag == 0) {
+                document.getElementById("reshuffleButton").style.opacity = 0.7;
+            }
+            remainShuffle()
+        }
+
+    </script>
+</head>
+<body style="background-image: url('background/PkemonField.jpg')" onload="shuffle()">
+    <div>
+        <h1>Choose you'r Pokemons!</h1>
+        <div id="phPokemon">
+            <!--<input type="button" id="Reshuffle" value="Reshuffle" onclick="shuffle();updateFlag()" />-->
+        </div>
+        <div>
+            <h3 id="phRemainShuffle">You have 3/3 shuffle pokemon attemps</h3>
+        </div>
+        <div id="buttonHolder">
+            <img src="buttons/reshuffle.png" class="buttons" id="reshuffleButton" onclick="updateFlag()" />
+            <img src="buttons/start.png" class="buttons" id="startButton" onclick="move('wildPokemons.html')" />
+        </div>
+            <!--<input type="button" value="Start" onclick="loadLocal();move()" />-->
+    </div>
+</body>
+</html>

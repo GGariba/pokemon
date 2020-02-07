@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="MyStyleSheet.css" type="text/css" rel="stylesheet"/>
+    <script src="pokedex.js"></script>
+    <script src="combined.js"></script>
+    <script>
+        function startPopping() {
+            setInterval(generateNewPokemon, 1500);
+        }
+
+
+        function generateNewPokemon() {
+            var strPokemonsImage = ""
+            var indexRand = indexSelector(pokemons.length)
+            var indexRandUrl = creatUrl(indexRand);
+            randomPokemon = new Pokemon(pokemons[indexRand])
+            leftRand = 100 + Math.floor(Math.random() * 1100)
+            topRand = 200 + Math.floor(Math.random() * 300)
+            strPokemonsImage += '<div class="pokemonOption" id="pokemonSelect" onclick="startBattle()">' + indexRandUrl + '<h3>' + pokemons[indexRand].name.english + '</h3></div>';
+
+            document.getElementById("randPokemon").style.left = leftRand + "px";
+            document.getElementById("randPokemon").style.top = topRand + "px";
+            document.getElementById("randPokemon").innerHTML = strPokemonsImage;
+            
+        }
+    </script>
+</head>
+<body onload="startPopping()" style="background-image: url('background/PkemonField.jpg')">
+    <h1>Click on Pokemon to buttle him</h1>
+    <div id="randPokemon"></div>
+   
+</body>
+</html>
